@@ -234,6 +234,19 @@ await jwtr.forEachKey(key => {
 
 Delete all the keys. [See more details](https://redis.io/commands/flushdb).
 
+# Dependencies
+
+* [Json Web Tokens](https://github.com/auth0/node-jsonwebtoken)
+* [Redis](https://github.com/NodeRedis/node_redis/)
+
+# TODO
+
+- [ ] increase test cover
+
+## Issue Reporting
+
+If you have found a bug or if you have a feature request, please report them at this repository issues section.
+
 # Contact me
 
 - Site: [ikloster.ru](http://ikloster.ru)
