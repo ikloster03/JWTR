@@ -1,0 +1,40 @@
+{
+  "name": "jwtredis",
+  "version": "0.0.1",
+  "description": "Small wrapper over jwt and redis.",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon -w src --exec 'npm run lint && node src'",
+    "lint": "eslint --ext js src",
+    "test": "jest test --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ikloster03/JWTRedis.git"
+  },
+  "keywords": [
+    "node.js",
+    "nodejs",
+    "jwt",
+    "redis"
+  ],
+  "author": {
+    "name": "Ivan Monastyrev",
+    "email": "ikloster@yandex.ru",
+    "url": "https://ikloster.ru"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ikloster03/JWTRedis/issues"
+  },
+  "homepage": "https://github.com/ikloster03/JWTRedis#readme",
+  "dependencies": {
+    "jsonwebtoken": "^8.4.0",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "jest": "^24.0.0",
+    "nodemon": "^1.18.9"
+  }
+}
