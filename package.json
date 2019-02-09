@@ -1,6 +1,6 @@
 {
-  "name": "jwtredis",
-  "version": "0.0.1",
+  "name": "jwtr",
+  "version": "0.2.0",
   "description": "Small wrapper over jwt and redis.",
   "main": "src/index.js",
   "scripts": {
