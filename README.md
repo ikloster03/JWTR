@@ -24,7 +24,7 @@ Also JWTR provides redis's client interface via property *client*.
 
 ```js
 const JWTR = require('jwtr')
-jwtr = JWTR.createJWTR({
+const jwtr = JWTR.createJWTR({
     prefix: 'token_'
 })
 jwtr.client.on('connect', () => {
@@ -44,7 +44,7 @@ Returns true if token was successfulle stored in redis.
 
 ```js
 const JWTR = require('jwtr')
-jwtr = JWTR.createJWTR({
+const jwtr = JWTR.createJWTR({
     prefix: 'token_'
 })
 const token = JWTR.sign({ foo: 'bar' }, 'secret', { expiresIn: '1h' })
@@ -81,7 +81,7 @@ encoded public key for RSA and ECDSA.
 
 ```js
 const JWTR = require('jwtr')
-jwtr = JWTR.createJWTR({
+const jwtr = JWTR.createJWTR({
     prefix: 'token_'
 })
 const token = JWTR.sign({ foo: 'bar' }, 'secret', { expiresIn: '1h' })
@@ -135,7 +135,7 @@ encoded private key for RSA and ECDSA. In case of a private key with passphrase 
 
 ```js
 const JWTR = require('jwtr')
-jwtr = JWTR.createJWTR({
+const jwtr = JWTR.createJWTR({
     prefix: 'token_'
 })
 const accessToken = JWTR.sign({ foo: 'bar' }, 'secret', { expiresIn: '15m' })
@@ -158,7 +158,7 @@ Clear all expired tokens from redis.
 
 ```js
 const JWTR = require('jwtr')
-jwtr = JWTR.createJWTR({
+const jwtr = JWTR.createJWTR({
     prefix: 'token_'
 })
 await jwtr.clear()
@@ -170,7 +170,7 @@ Clear all tokens from redis.
 
 ```js
 const JWTR = require('jwtr')
-jwtr = JWTR.createJWTR({
+const jwtr = JWTR.createJWTR({
     prefix: 'token_'
 })
 await jwtr.clearAll()
@@ -184,7 +184,7 @@ Set object by key in redis.
 
 ```js
 const JWTR = require('jwtr')
-jwtr = JWTR.createJWTR({
+const jwtr = JWTR.createJWTR({
     prefix: 'token_'
 })
 await jwtr.set('token', { foo: 'bar'})
@@ -196,7 +196,7 @@ Get object by key from redis.
 
 ```js
 const JWTR = require('jwtr')
-jwtr = JWTR.createJWTR({
+const jwtr = JWTR.createJWTR({
     prefix: 'token_'
 })
 await jwtr.get('token')
@@ -208,7 +208,7 @@ Method provides access to keys from redis and performs callback with keys.
 
 ```js
 const JWTR = require('jwtr')
-jwtr = JWTR.createJWTR({
+const jwtr = JWTR.createJWTR({
     prefix: 'token_'
 })
 await jwtr.keys(keys => {
@@ -222,7 +222,7 @@ Method executes a provided function once for each array of the keys item.
 
 ```js
 const JWTR = require('jwtr')
-jwtr = JWTR.createJWTR({
+const jwtr = JWTR.createJWTR({
     prefix: 'token_'
 })
 await jwtr.forEachKey(key => {
