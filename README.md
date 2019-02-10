@@ -140,14 +140,14 @@ const jwtr = JWTR.createJWTR({
 })
 const accessToken = JWTR.sign({ foo: 'bar' }, 'secret', { expiresIn: '15m' })
 const refreshToken = JWTR.sign({ foo: 'bar' }, 'secret', { expiresIn: '2h' })
- let { access_token, refresh_token } = await jwtr.refresh(
+let { access_token, refresh_token } = await jwtr.refresh(
     { accessToken, refreshToken },
-      'secret',
-      {
+    'secret',
+    {
         access_payload: { foo: 'bar' },
         refresh_payload: { foo: 'bar' }
-      }
-    )
+    }
+)
 ```
 
 Also functions to clear tokens from redis
