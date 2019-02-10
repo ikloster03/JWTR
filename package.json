@@ -1,7 +1,7 @@
 {
   "name": "jwtr",
   "version": "0.2.4",
-  "description": "Small wrapper over jwt and redis.",
+  "description": "It's a little wrapper over Json Web Tokens and Redis for Node.js is based on promises.",
   "main": "src/index.js",
   "scripts": {
     "dev": "nodemon -w src --exec 'npm run lint && node src'",
@@ -25,9 +25,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ikloster03/JWTRedis/issues"
+    "url": "https://github.com/ikloster03/JWTR/issues"
   },
-  "homepage": "https://github.com/ikloster03/JWTRedis#readme",
+  "homepage": "https://github.com/ikloster03/JWTR#readme",
   "dependencies": {
     "jsonwebtoken": "^8.4.0",
     "redis": "^2.8.0"
