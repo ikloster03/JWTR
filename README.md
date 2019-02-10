@@ -249,7 +249,10 @@ await jwtr.flush()
 
 # TODO
 
-- [ ] increase test cover
+- [ ] increase test cover (all interface)
+- [ ] improve readme
+- [ ] test different HMAC algorithms
+- [ ] test the PEM encoded private key for RSA and ECDSA
 
 # Issue Reporting
 
