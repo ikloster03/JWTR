@@ -38,7 +38,7 @@ For JWT via Redis was implemented next methods:
 
 ### jwtr.invalidate(token)
 
-Returns true if token was successfulle stored in redis.
+Returns true if token was successfully stored in redis.
 
 `token` is the JsonWebToken string
 
@@ -234,6 +234,14 @@ await jwtr.forEachKey(key => {
 
 Delete all the keys. [See more details](https://redis.io/commands/flushdb).
 
+```js
+const JWTR = require('jwtr')
+const jwtr = JWTR.createJWTR({
+    prefix: 'token_'
+})
+await jwtr.flush()
+```
+
 # Dependencies
 
 * [Json Web Tokens](https://github.com/auth0/node-jsonwebtoken)
@@ -257,4 +265,4 @@ If you have found a bug or if you have a feature request, please report them at 
 
 # [LICENSE](https://github.com/ikloster03/jwtr/blob/master/LICENSE)
 
-Copyright (c) 2019 Monastyrev Ivan <ikloster@yandex.ru>. Licensed under the [MIT license](https://github.com/ikloster03/jwtr/blob/master/LICENSE).
+Copyright (c) 2019 Ivan Monastyrev <ikloster@yandex.ru>. Licensed under the [MIT license](https://github.com/ikloster03/jwtr/blob/master/LICENSE).
