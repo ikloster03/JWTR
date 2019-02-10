@@ -13,8 +13,8 @@ $ npm install jwtr
 ```js
 const JWTR = require('jwtr')
 const token = JWTR.sign({ foo: 'bar' }, 'secret', { expiresIn: '1h' })
-const decoded = jwt.verify(token, 'secret')
-const completeDecoded = jwt.decode(token, {complete: true})
+const decoded = JWTR.verify(token, 'secret')
+const completeDecoded = JWTR.decode(token, {complete: true})
 ```
 
 JWTR provides full [Json Web Tokens](https://github.com/auth0/node-jsonwebtoken)'s interface with exceptions.
