@@ -243,7 +243,7 @@ Delete all the keys. [See more details](https://redis.io/commands/flushdb).
 
 - [ ] increase test cover
 
-## Issue Reporting
+# Issue Reporting
 
 If you have found a bug or if you have a feature request, please report them at this repository issues section.
 
