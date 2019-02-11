@@ -5,7 +5,13 @@ It's a little wrapper over [Json Web Tokens](https://github.com/auth0/node-jsonw
 # Install
 
 ```bash
-$ npm install jwtr
+$ npm install jwtr --save
+```
+
+or
+
+```bash
+$ yarn add jwtr
 ```
 
 # Usage
