@@ -1,6 +1,6 @@
 {
   "name": "jwtr",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "It's a little wrapper over Json Web Tokens and Redis for Node.js is based on promises.",
   "main": "src/index.js",
   "scripts": {
