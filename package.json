@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "nodemon -w src --exec 'npm run lint && node src'",
+    "debug": "nodemon -w src --exec 'npm run lint && node --inspect src'",
     "lint": "eslint --ext js src",
     "test": "jest test --watch"
   },
