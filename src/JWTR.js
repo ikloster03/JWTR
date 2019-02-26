@@ -6,6 +6,22 @@ const JWTR = function(options = {}) {
   const PREFIX = 'prefix' in client.options ? client.options.prefix : ''
 
   const set = (key, obj) => {
+    if(!key) {
+      throw new Error('argument key is undefined or empty')
+    }
+
+    if(typeof key !== 'string') {
+      throw new TypeError('argument key must be a string')
+    }
+
+    if(!Object.keys(obj).length === 0 && obj.constructor === Object) {
+      throw new Error('argument obj is undefined or empty')
+    }
+
+    if(typeof obj !== 'object') {
+      throw new TypeError('argument obj must be a object')
+    }
+
     return new Promise(resolve => {
       let arr = []
       Object.keys(obj).forEach(key => {
@@ -18,6 +34,14 @@ const JWTR = function(options = {}) {
   }
 
   const get = key => {
+    if(!key) {
+      throw new Error('argument key is undefined or empty')
+    }
+
+    if(typeof key !== 'string') {
+      throw new TypeError('argument key must be a string')
+    }
+
     return new Promise((resolve, reject) => {
       client.hgetall(key, (err, obj) => {
         if (err) reject(err)
@@ -27,6 +51,14 @@ const JWTR = function(options = {}) {
   }
 
   const keys = callback => {
+    if(!callback) {
+      throw new Error('argument callback is undefined')
+    }
+
+    if(typeof callback !== 'function') {
+      throw new TypeError('argument callback must be a function')
+    }
+
     return new Promise((resolve, reject) => {
       client
         .multi()
@@ -40,6 +72,14 @@ const JWTR = function(options = {}) {
   }
 
   const forEachKey = async callback => {
+    if(!callback) {
+      throw new Error('argument callback is undefined')
+    }
+
+    if(typeof callback !== 'function') {
+      throw new TypeError('argument callback must be a function')
+    }
+
     return await keys(keys => {
       keys.forEach(callback)
     })
@@ -58,7 +98,40 @@ const JWTR = function(options = {}) {
     })
   }
 
+  const checkToken = (token) => {
+    if(!token) {
+      throw new Error('argument token is undefined or empty')
+    }
+
+    if(typeof token !== 'string') {
+      throw new TypeError('argument token must be a string')
+    }
+
+    if(token.split('.').length !== 3) {
+      throw new Error('argument token is malformed')
+    }
+  }
+
   const validate = async (token, secretOrPublicKey, options, callback) => {
+    try {
+      checkToken(token)
+    } catch (error) {
+      throw error
+    }
+
+    if(!secretOrPublicKey) {
+      throw new Error('argument secretOrPublicKey is undefined or empty')
+    }
+
+    if ((typeof options === 'function') && !callback) {
+      callback = options
+      options = {}
+    }
+
+    if (!options) {
+      options = {};
+    }
+
     let obj = await get(token)
 
     if (obj && obj.status === 'invalidated') {
@@ -73,12 +146,18 @@ const JWTR = function(options = {}) {
   }
 
   const invalidate = async token => {
-    const decoded = jwt.decode(token)
-    const now = new Date().getTime()
-    const exp = decoded.exp * 1000
+    try {
+      checkToken(token)
 
-    if (exp < now) {
-      throw new jwt.TokenExpiredError()
+      const decoded = jwt.decode(token)
+      const exp = decoded.exp * 1000
+      const now = new Date().getTime()
+
+      if (exp < now) {
+        return true
+      }
+    } catch (error) {
+      throw error
     }
 
     let obj = await get(token)
@@ -89,13 +168,24 @@ const JWTR = function(options = {}) {
 
     await set(token, {
       status: 'invalidated',
-      exp: decoded.exp
+      exp: exp
     })
 
     return true
   }
 
   const refresh = async ({ accessToken, refreshToken }, secretOrPrivateKey, options) => {
+    try {
+      checkToken(accessToken)
+      checkToken(refreshToken)
+    } catch (error) {
+      throw error
+    }
+
+    if(!secretOrPublicKey) {
+      throw new Error('argument secretOrPublicKey is undefined or empty')
+    }
+    
     const defaultAccessOptions = {
       algorithm: 'HS256',
       expiresIn: '15m'
