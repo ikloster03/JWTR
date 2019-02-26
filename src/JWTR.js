@@ -156,22 +156,22 @@ const JWTR = function(options = {}) {
       if (exp < now) {
         return true
       }
+
+      let obj = await get(token)
+
+      if (obj && obj.status === 'invalidated') {
+        return true
+      }
+  
+      await set(token, {
+        status: 'invalidated',
+        exp: exp
+      })
+  
+      return true
     } catch (error) {
       throw error
     }
-
-    let obj = await get(token)
-
-    if (obj && obj.status === 'invalidated') {
-      return true
-    }
-
-    await set(token, {
-      status: 'invalidated',
-      exp: exp
-    })
-
-    return true
   }
 
   const refresh = async ({ accessToken, refreshToken }, secretOrPrivateKey, options) => {
@@ -213,8 +213,12 @@ const JWTR = function(options = {}) {
           : defaultRefreshOptions
     }
 
-    await invalidate(accessToken)
-    await invalidate(refreshToken)
+    try {
+      await invalidate(accessToken)
+      await invalidate(refreshToken)
+    } catch (error) {
+      throw error
+    }
 
     return {
       access_token: jwt.sign(accessPayload, secretOrPrivateKey, accessOptions),
