@@ -174,7 +174,7 @@ const JWTR = function(options = {}) {
     }
   }
 
-  const refresh = async ({ accessToken, refreshToken }, secretOrPrivateKey, options) => {
+  const refresh = async ({ accessToken, refreshToken }, secretOrPublicKey, options) => {
     try {
       checkToken(accessToken)
       checkToken(refreshToken)
@@ -221,8 +221,8 @@ const JWTR = function(options = {}) {
     }
 
     return {
-      access_token: jwt.sign(accessPayload, secretOrPrivateKey, accessOptions),
-      refresh_token: jwt.sign(refreshPayload, secretOrPrivateKey, refreshOptions)
+      access_token: jwt.sign(accessPayload, secretOrPublicKey, accessOptions),
+      refresh_token: jwt.sign(refreshPayload, secretOrPublicKey, refreshOptions)
     }
   }
 
