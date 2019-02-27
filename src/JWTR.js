@@ -132,16 +132,21 @@ const JWTR = function(options = {}) {
       options = {};
     }
 
-    let obj = await get(token)
+    try {
+      let obj = await get(token)
 
-    if (obj && obj.status === 'invalidated') {
-      return false
-    }
+      if (obj && obj.status === 'invalidated') {
+        return false
+      }
 
-    if (callback) {
-      jwt.verify(token, secretOrPublicKey, options, callback)
-    } else {
-      return await jwt.verify(token, secretOrPublicKey, options)
+      if (callback) {
+        jwt.verify(token, secretOrPublicKey, options, callback)
+      } else {
+        const result = await jwt.verify(token, secretOrPublicKey, options)
+        return result
+      }
+    } catch (error) {
+      throw error
     }
   }
 
