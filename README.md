@@ -258,6 +258,10 @@ await jwtr.flush()
 
 If you have found a bug or if you have a feature request, please report them at this repository issues section.
 
+# ToDo
+
+[Show project JWTR](https://github.com/ikloster03/JWTR/projects/1)
+
 # Contact me
 
 - Site: [ikloster.ru](http://ikloster.ru)
