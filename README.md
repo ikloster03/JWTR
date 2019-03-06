@@ -43,7 +43,7 @@ jwtr.client.on('connect', () => {
 
 For JWT via Redis was implemented next methods:
 
-### jwtr.invalidate(token)
+<details><summary><code>jwtr.invalidate(token)</code></summary><p>
 
 Returns true if token was successfully stored in redis.
 
@@ -58,7 +58,9 @@ const token = JWTR.sign({ foo: 'bar' }, 'secret', { expiresIn: '1h' })
 const result = await jwtr.invalidate(token) // true
 ```
 
-### jwtr.validate(token, secretOrPublicKey, [options, callback])
+</p></details>
+
+<details><summary><code>jwtr.validate(token, secretOrPublicKey, [options, callback])</code></summary><p>
 
 (Asynchronous) If a callback is supplied, function acts asynchronously. The callback is called with the decoded payload if the signature is valid and optional expiration, audience, or issuer are valid. If not, it will be called with the error.
 
@@ -95,7 +97,9 @@ const token = JWTR.sign({ foo: 'bar' }, 'secret', { expiresIn: '1h' })
 const decoded = await jwtr.validate(token, 'secret', { algorithms: ['HS256'] })
 ```
 
-### jwtr.refresh(tokens, secretOrPrivateKey, [options])
+</p></details>
+
+<details><summary><code>jwtr.refresh(tokens, secretOrPrivateKey, [options])</code></summary><p>
 
 Returns new access and refresh tokens beforehand making old tokens not valid.
 
@@ -157,9 +161,11 @@ let { access_token, refresh_token } = await jwtr.refresh(
 )
 ```
 
+</p></details>
+
 Also functions to clear tokens from redis
 
-### jwtr.clear()
+<details><summary><code>jwtr.clear()</code></summary><p>
 
 Clear all expired tokens from redis.
 
@@ -171,7 +177,9 @@ const jwtr = JWTR.createJWTR({
 await jwtr.clear()
 ```
 
-### jwtr.clearAll()
+</p></details>
+
+<details><summary><code>jwtr.clearAll()</code></summary><p>
 
 Clear all tokens from redis.
 
@@ -183,9 +191,11 @@ const jwtr = JWTR.createJWTR({
 await jwtr.clearAll()
 ```
 
+</p></details>
+
 And helpers functions
 
-### jwtr.set(key, obj)
+<details><summary><code>jwtr.set(key, obj)</code></summary><p>
 
 Set object by key in redis.
 
@@ -197,7 +207,9 @@ const jwtr = JWTR.createJWTR({
 await jwtr.set('token', { foo: 'bar'})
 ```
 
-### jwtr.get(key)
+</p></details>
+
+<details><summary><code>jwtr.get(key)</code></summary><p>
 
 Get object by key from redis.
 
@@ -209,7 +221,9 @@ const jwtr = JWTR.createJWTR({
 await jwtr.get('token')
 ```
 
-### jwtr.keys(callback)
+</p></details>
+
+<details><summary><code>jwtr.keys(callback)</code></summary><p>
 
 Method provides access to keys from redis and performs callback with keys.
 
@@ -223,7 +237,9 @@ await jwtr.keys(keys => {
 })
 ```
 
-### jwtr.forEachKey(callback)
+</p></details>
+
+<details><summary><code>jwtr.forEachKey(callback)</code></summary><p>
 
 Method executes a provided function once for each array of the keys item.
 
@@ -237,7 +253,9 @@ await jwtr.forEachKey(key => {
 })
 ```
 
-### jwtr.flush()
+</p></details>
+
+<details><summary><code>jwtr.flush()</code></summary><p>
 
 Delete all the keys. [See more details](https://redis.io/commands/flushdb).
 
@@ -248,6 +266,8 @@ const jwtr = JWTR.createJWTR({
 })
 await jwtr.flush()
 ```
+
+</p></details>
 
 # Dependencies
 
