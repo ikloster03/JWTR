@@ -253,13 +253,6 @@ await jwtr.flush()
 * [Json Web Tokens](https://github.com/auth0/node-jsonwebtoken)
 * [Redis](https://github.com/NodeRedis/node_redis/)
 
-# TODO
-
-- [ ] increase test cover (all interface)
-- [ ] improve readme
-- [ ] test different HMAC algorithms
-- [ ] test the PEM encoded private key for RSA and ECDSA
-
 # Issue Reporting
 
 If you have found a bug or if you have a feature request, please report them at this repository issues section.
