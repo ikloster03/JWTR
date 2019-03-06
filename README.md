@@ -4,12 +4,13 @@ It's a little wrapper over [Json Web Tokens](https://github.com/auth0/node-jsonw
 
 # Install
 
+[npm package](https://www.npmjs.com/package/jwtr)
+
 ```bash
 $ npm install jwtr --save
 ```
 
-or
-
+[yarn package](https://yarnpkg.com/en/package/jwtr)
 ```bash
 $ yarn add jwtr
 ```
