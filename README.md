@@ -1,5 +1,7 @@
 # JWTR
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ikloster03/JWTR.svg)](https://greenkeeper.io/)
+
 It's a little wrapper over [Json Web Tokens](https://github.com/auth0/node-jsonwebtoken) and [Redis](https://github.com/NodeRedis/node_redis/) for Node.js is based on promises.
 
 # Install
