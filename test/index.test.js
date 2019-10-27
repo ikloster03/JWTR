@@ -64,8 +64,8 @@ describe('jwt redis', () => {
 
     const value = await jwtr.get(token)
     expect(value).not.toBeNull()
-    const exp = value.exp * 1000
-    expect('' + JWTR.decode(token).exp).toBe(exp)
+    const exp = value.exp / 1000
+    expect(JWTR.decode(token).exp).toBe(exp)
   })
 
   test('validate', async () => {
